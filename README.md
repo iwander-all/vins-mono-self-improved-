@@ -1,7 +1,7 @@
 # vins-mono(self-improved)
 an improved version of vins-mono
 
-I: OK, now, let me introduce to you a improved version of ...
+I: OK, now, let me introduce to you an improved version of ...
 
 you: Hey,hey,these seem like, well, how to say, exactly the same as the original masterpiece VINS-Mono, so what have you done man???
 
