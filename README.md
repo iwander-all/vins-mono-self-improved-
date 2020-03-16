@@ -32,15 +32,18 @@ Then, open one terminal, type "roscore", of course you have to install ROS in ad
 
 And open 2 terminals and in the path of devel,type "source setup.bash", then fill in:
 
-roslaunch vins_estimator euroc.launch 
-roslaunch vins_estimator vins_rviz.launch
+"roslaunch vins_estimator euroc.launch"
+
+"roslaunch vins_estimator vins_rviz.launch"
 
 Then another ternimal with:
 
-rosbag play YOUR_PATH_TO_DATASET/MH_01_easy.bag 
+"rosbag play YOUR_PATH_TO_DATASET/MH_01_easy.bag" 
 
 
-Good time.
+Good time. And work have not done for me yet. I will develop a dual-vio based on vins-mono, not vins-fusion.
+
+you: hahaha, wait for good news!
 
 
 
