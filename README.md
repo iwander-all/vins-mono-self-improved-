@@ -13,7 +13,7 @@ I: I establish include for each packages and put all the .h into them.
 
 you:oh-hoh?
 
-I: And when I read the original codes, I think the main vio functions, estimator.cpp, they are too long! Maybe it is not easier for new-comer to figure out the strcture.
+I: And when I read the original codes, I think the main vio functions, estimator.cpp, they are too long! Maybe it is not easy for new-comer to figure out the strcture.
 
 So I extract codes out of some functions like initialStructure(). optimization()...
 
@@ -41,7 +41,7 @@ Then another ternimal with:
 "rosbag play YOUR_PATH_TO_DATASET/MH_01_easy.bag" 
 
 
-Good time. And work have not done for me yet. I will develop a dual-vio based on vins-mono, not vins-fusion.
+Good time. And work have not done for me yet. I will develop a dual-vio based on vins-mono, not on vins-fusion.
 
 you: hahaha, wait for good news!
 
