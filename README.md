@@ -50,13 +50,13 @@ you: hahaha, wait for good news!
 修改日历：
 (1)   在每一个package下都创建了include文件夹，把.h文件都放在了include目录中，并修改了.cpp文件中#include的相对路径；
 (2)   把一些代码量比较长的，包含功能比较多的函数(例如process(), initialStructure(),Optimization()等)做了进一步的拆分；
-(3)   把initial和非线性优化部分从estimator.cpp文件中提取出来，放在了backend.h/cpp和initial.h/cpp文件中，并创建了class Initial和class Backend，estimator.cpp的代码减少到220行左右，不知道这样会不会减少效率；
-(4)   在stimator::processImage()中，我感觉数据结构all_image_frame，temp_pre_integration可能不需要在vins运行中一直进行维护，我把这个变量的生命周期限定在了初始化的时间内；
-(5)   在文件中，发现了一些定义了，但是没有用到的变量，不清楚是不是可以删掉呢。
+(3)   把initial和非线性优化部分从estimator.cpp文件中提取出来，放在了backend.h/cpp和initial.h/cpp文件中，并创建了class Initial和class Backend，estimator.cpp的代码减少到220行左右；
+(4)   在stimator::processImage()中，数据结构all_image_frame，temp_pre_integration等变量的生命周期被限定在了初始化的时间内；
+(5)   在文件中，删除了一些定义了但没有使用的变量：
 a.     estimator_node.cpp中的std::mutex i_buf；
 b.     Estimator::clearState()中多写了一行solver_flag = INITIAL;
 c.     estimator.h中的bool is_valid, is_key和int sum_of_outlier, sum_of_back, sum_of_front, sum_of_invalid和vector<Vector3d> point_cloud，margin_cloud。
-(6)   在euroc.launch中，感觉可以把<arg name="vins_path" default = "$(find feature_tracker)/../config/../" />修改为<arg name="vins_path" default = "$(find feature_tracker)/../ " />。
+(6)   在euroc.launch中，把<arg name="vins_path" default = "$(find feature_tracker)/../config/../" />修改为<arg name="vins_path" default = "$(find feature_tracker)/../ " />。
 
 
 
