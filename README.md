@@ -43,7 +43,20 @@ Then another ternimal with:
 
 Good time. And work have not done for me yet. I will develop a dual-vio based on vins-mono, not on vins-fusion.
 
+And my blog is https://blog.csdn.net/iwanderu/article/details/104926669.
+
 you: hahaha, wait for good news!
+
+
+
+
+
+
+
+
+
+
+
 
 
 4.流程
