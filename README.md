@@ -163,4 +163,51 @@ class Estimator是主类，内部包含backend对象，创建backend成员变量
 
 在上一步的基础上，这个操作就很容易了。这一部分已经完成，放在catkin_ws3中。完成后，estimator.cpp文件从1200行减少到220行。
 
+4.2 对vins-mono的提升
+
+在阅读代码的过程中，发现一些作用不大的，奇怪的数据结构和结构，在这里修改和测试。
+
+(1)euroc.launch
+
+路径：src/vins_estimator/launch/euroc.launch
+里面有一个非常奇怪的路径，即：
+  <arg name="vins_path" default = "$(find feature_tracker)/../config/../" />
+修改为：
+  <arg name="vins_path" default = "$(find feature_tracker)/../ " />
+测试通过。
+
+(2) estimator_node.cpp
+
+路径：src/vins_estimator/estimator_node.cpp
+定义了一个变量std::mutex i_buf;没有用上，删除。
+
+(3) Estimator::clearState()
+
+路径：src/vins_estimator/estimator.cpp
+多写了一行solver_flag = INITIAL; ，删除。
+
+(4) Estimator::processImage()
+
+路径：src/vins_estimator/estimator.cpp
+这里定义了一个数据结构all_image_frame，和相关连的数据结构比如说tmp_pre_integration，imageframe，它们在整个运行阶段都在不断的新建和维护，但是他们在代码中的作用仅用于初始化，所以我认为可以缩短以上数据结构的生命周期。在这些数据结构前面都加上if (solver_flag == INITIAL) 的判断。tmp_pre_integration在processIMU中也出现过。
+还有slideWindow()中对的marg_old操作也要加上判断。
+
+(5) Estimator::initialStructure()
+
+路径：src/vins_estimator/estimator.cpp
+这个函数第一部分是用来判断IMU是否有足够的激励，但是作者又把return false注释掉了，所以我觉得整个代码都可以注释掉，减少计算量。
+
+(6) estimator.h
+
+路径：src/vins_estimator/estimator.h
+头文件里出现了一些没有用上的数据结构，例如：
+bool is_valid, is_key;
+
+下面四个计数器，第一个和第四个就没有用过，中间两个虽然出现了，但是没有基于他们做进一步的操作：
+int sum_of_outlier, sum_of_back, sum_of_front, sum_of_invalid;
+
+还有，
+vector<Vector3d> point_cloud;
+vector<Vector3d> margin_cloud;
+
 
