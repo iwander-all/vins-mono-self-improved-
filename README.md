@@ -20,11 +20,9 @@ Then another ternimal with:
 "rosbag play YOUR_PATH_TO_DATASET/MH_01_easy.bag" 
 
 
-Good time. And work have not done for me yet. I will develop a dual-vio based on vins-mono, not on vins-fusion.
 
 And my blog is https://blog.csdn.net/iwanderu/article/details/104926669.
 
-you: hahaha, wait for good news!
 
 修改日历：
 (1)   在每一个package下都创建了include文件夹，把.h文件都放在了include目录中，并修改了.cpp文件中#include的相对路径；
