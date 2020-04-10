@@ -34,6 +34,7 @@ a.     estimator_node.cpp中的std::mutex i_buf；
 b.     Estimator::clearState()中多写了一行solver_flag = INITIAL;
 c.     estimator.h中的bool is_valid, is_key和int sum_of_outlier, sum_of_back, sum_of_front, sum_of_invalid和vector<Vector3d> point_cloud，margin_cloud。
 (6)   在euroc.launch中，把<arg name="vins_path" default = "$(find feature_tracker)/../config/../" />修改为<arg name="vins_path" default = "$(find feature_tracker)/../ " />。
+(7)   注意，回环检测的字典在原vins-mono的support-file里，因为超大了我没有上传，所以要想实现回环检测的正常功能，请把support-file复制到目录中。
 
 
 
